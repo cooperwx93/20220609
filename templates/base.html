@@ -1,0 +1,95 @@
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/m.css' %}">
+    <link rel="stylesheet" href="{% static 'css/info.css' %}">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/comm.js' %}"></script>
+    <script src="{% static 'js/modernizr.js' %}"></script>
+    <script src="{% static 'js/scrollReveal.js' %}"></script>
+</head>
+<body>
+<header class="header-navigation" id="header">
+    <nav>
+    <div class="logo">
+        <a href="javascript:;">博客首页</a>
+    </div>
+    <h2 id="mnavh"><span class="navicon"></span> </h2>
+    <ul id="starlist">
+        <li><a href="{% url 'article' id 1 %}">我的日记</a></li>
+        <li><a href="{% url 'album' id 1 %}">我的相册</a></li>
+        <li><a href="{% url 'about' id %}">关于我</a></li>
+        <li><a href="{% url 'board' id 1 %}">留言</a></li>
+        <li><a href="{% url 'register'  %}">注册</a></li>
+        <li><a href="{% url 'admin:logout'  %}">登出</a></li>
+        <li><a href="{% url 'admin:index' %}">博客后台管理</a></li>
+    </ul>
+    </nav>
+</header>
+{% block body %}
+    <article>
+    <aside class="l_box">
+        <div class="about_me">
+            <h2>关于我</h2>
+            <ul>
+                {% if user.photo %}
+                    <i><img src="{{ user.photo.url }}"></i>
+                {% else %}
+                <i>
+                    <img src="{% static 'images/user.jpg' %}">
+                </i>
+                {% endif %}
+            <p>
+                <b>{{ user.name }}</b>, {{ user.introduce }}
+            </p>
+            </ul>
+        </div>
+    <div class="wdxc">
+    <h2>我的相册</h2>
+        <ul>
+            {% for a in album %}
+            <li>
+                <a href="javascript:;"><img src="{{ a.photo.url }}"></a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="fenlei">
+        <h2>文章分类</h2>
+        <ul>
+            {% for t in tag %}
+            <li><a href="/">{{ t.tag }}</a> </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="tuijian">
+        <h2>站长推荐</h2>
+        <ul>
+            <li>
+                <a href="https://www.python.org/" target="new">python官网</a>
+            </li>
+            <li>
+                <a href="https://xueqiu.com/" target="new">雪球</a>
+            </li>
+            <li>
+                <a href="https://www.baidu.com/" target="new">百度一下</a>
+            </li>
+        </ul>
+    </div>
+    <div class="links">
+        <h2>友情链接</h2>
+        <ul>
+            <a href="https://www.jd.com/" target="new">京东</a>
+            <a href="https://www.taobao.com/" target="new">淘宝</a>
+        </ul>
+    </div>
+    </aside>
+{% endblock body %}
+{% block content %}{% endblock content %}
+</article>
+<a href="#" class="cd-top">Top</a>
+{% block script %}{% endblock script %}
+</body>
+</html>

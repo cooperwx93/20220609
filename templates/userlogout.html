@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>{{ title }}</title>
+    {#  加载外部 css 样式  #}
+    <link rel="stylesheet" href="{% static "css/reset.css" %}">
+    <link rel="stylesheet" href="{% static "css/user.css" %}">
+    {#  加载外部 js 脚本  #}
+    <script src="{% static "js/jquery.min.js" %}"></script>
+    <script src="{% static "js/user.js" %}"></script>
+</head>
+<body>
+<p>{{ tips }}</p>
+{#动态背景设置#}
+<script type="text/javascript">
+    window.onload = function () {
+        var config = {
+            vx: 4,
+            vy: 4,
+            height: 2,
+            width: 2,
+            count: 100,
+            color: '121, 162, 185',
+            stroke: '100, 200, 180',
+            disk: 6000,
+            e_dist: 20000,
+            max_conn: 10,
+        }
+        CanvasParticle(config);
+    }
+</script>
+<script src="{% static 'js/canvas-particle.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    <main class="r_box">
+    <div class="about">
+        <div>{{ user.introduce }}</div>
+        <br><hr><br>
+        <h2>我的资料</h2>
+        <br>
+        <p>名字： {{ user.name }}</p>
+        <br/>
+        <br>
+        <p>微博： {{ user.wb }}</p>
+        <br/>
+        <br>
+        <p>微信： {{ user.wx }}</p>
+        <br/>
+        <br>
+        <p>QQ： {{ user.qq }}</p>
+        <br/>
+    </div>
+    </main>
+{% endblock content %}
